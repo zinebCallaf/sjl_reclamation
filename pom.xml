@@ -8,6 +8,7 @@
   <modules>
   	<module>reclamation-service</module>
     <module>reclamation-rest-api</module>
+    <module>reclamation-model</module>
   </modules>
   
   <properties>
@@ -18,21 +19,54 @@
     <maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
     <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
     <java.version>1.8</java.version>
+    <hibernate.version>5.3.3.Final</hibernate.version>
+    <MYSQL.version>5.1.6</MYSQL.version>
+    
+    
   </properties>
   
   <dependencyManagement>
   	<dependencies>
+  	
   	<dependency>
   	<groupId>com.zineb</groupId>
   	<artifactId>reclamation-service</artifactId>
   	<version>${project.version}</version>
   	</dependency>
+  	
   	<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    
+    <!-- Hibernate -->
+    
+    <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>${hibernate.version}</version>
+    </dependency>
+    
+    
+ 
+    
+    <!-- Oracle 
+    <dependency>
+	        <groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${oracle.version}</version>
+		</dependency>
+		-->
+		
+	<!-- MYSQL -->
+	<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>${MYSQL.version}</version>
+</dependency>
+    
     </dependencies>
   </dependencyManagement>
   
