@@ -1,4 +1,4 @@
-package dao;
+package com.zineb.hibernate.entity;
 
 import java.io.Serializable;
 
@@ -10,6 +10,12 @@ import javax.persistence.Id;
 @Entity
 public class Camion implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id @GeneratedValue
 	@Column (name="id")
 	private Long id;
