@@ -15,53 +15,53 @@ public class Agent implements Serializable{
 
 	@Id @GeneratedValue
 	@Column(name="id")
-	private Integer agentId;
+	private Integer id;
 	
 	@Column(name="nom")
-    private String agentNom;
+    private String nom;
 	
 	@Column(name="prenom")
-    private String agentPrenom;
+    private String prenom;
 	
     
     
-    public Integer getAgentId() {
-		return agentId;
+    public Integer getId() {
+		return id;
 	}
-	public void setAgentId(Integer agentId) {
-		this.agentId = agentId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getAgentNom() {
-		return agentNom;
+	public String getNom() {
+		return nom;
 	}
-	public void setAgentNom(String agentNom) {
-		this.agentNom = agentNom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-	public String getAgentPrenom() {
-		return agentPrenom;
+	public String getPrenom() {
+		return prenom;
 	}
-	public void setAgentPrenom(String agentPrenom) {
-		this.agentPrenom = agentPrenom;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 	
 	public Agent(){
 		
 	}
 	
-	public Agent(Integer agentId , String agentNom , String agentPrenom){
-		this.agentId=agentId;
-		this.agentNom=agentNom;
-		this.agentPrenom=agentPrenom;
+	public Agent(Integer id , String nom , String prenom){
+		this.id=id;
+		this.nom=nom;
+		this.prenom=prenom;
 	}
 	
-	public Agent(String agentNom,String agentPrenom){
-		this.agentNom=agentNom;
-		this.agentPrenom=agentPrenom;
+	public Agent(String nom,String prenom){
+		this.nom=nom;
+		this.prenom=prenom;
 	}
 	
 	public String toString() {
 		
-		        return "Agent= Id: " + this.agentId + ", Nom: " + this.agentNom + ", Prenom: " + this.agentNom;
+		        return "Agent= Id: " + this.id + ", Nom: " + this.nom + ", Prenom: " + this.nom;
 	
 		    }
 
