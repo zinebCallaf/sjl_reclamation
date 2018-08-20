@@ -6,15 +6,26 @@
         <artifactId>sjl_reclamation</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <packaging>jar</packaging>
-    <artifactId>reclamation-service</artifactId>
-    
+    <artifactId>reclamation-model</artifactId>
+
     <dependencies>
-    	<dependency>
-    		<groupId>com.sjl.reclamation</groupId>
-    		<artifactId>reclamation-model</artifactId>
-    	</dependency>
-    	<dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-tools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+        </dependency>
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
@@ -33,8 +44,5 @@
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
-    
     </dependencies>
-    
-  
 </project>

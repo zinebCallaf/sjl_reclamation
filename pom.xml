@@ -1,87 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.zineb</groupId>
-  <artifactId>sjl_reclamation</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <modules>
-  	<module>reclamation-service</module>
-    <module>reclamation-rest-api</module>
-  </modules>
-  
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <junit.version>4.11</junit.version>
-    <maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
-    <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
-    <java.version>1.8</java.version>
-  </properties>
-  
-  <dependencyManagement>
-  	<dependencies>
-  	<dependency>
-  	<groupId>com.zineb</groupId>
-  	<artifactId>reclamation-service</artifactId>
-  	<version>${project.version}</version>
-  	</dependency>
-  	<dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    </dependencies>
-  </dependencyManagement>
-  
-  <build>
-  <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-        
-        <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.0</version>
-        </plugin>
-        <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven.compiler.plugin.version}</version>
-					<configuration>
-						<source>${java.version}</source>
-						<target>${java.version}</target>
-					</configuration>
-		</plugin>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sjl.reclamation</groupId>
+    <artifactId>sjl_reclamation</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>reclamation-service</module>
+        <module>reclamation-rest-api</module>
+        <module>reclamation-model</module>
+    </modules>
 
-		<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>${maven.enforcer.plugin.version}</version>
-					<executions>
-						<execution>
-							<id>enforce-java</id>
-							<goals>
-								<goal>enforce</goal>
-							</goals>
-							<configuration>
-								<rules>
-									<requireJavaVersion>
-										<version>${java.version}</version>
-									</requireJavaVersion>
-								</rules>
-							</configuration>
-						</execution>
-					</executions>
-		  </plugin>
-        
-      </plugins>
-  </pluginManagement>
-  </build>
-  
-  
-  
-  
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
+        <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
+        <java.version>1.8</java.version>
+        <hibernate.version>5.3.5.Final</hibernate.version>
+        <hibernate.tools.version>5.3.4.Final</hibernate.tools.version>
+        <MYSQL.version>5.1.6</MYSQL.version>
+        <h2.version>1.4.197</h2.version>
+        <junit.version>4.12</junit.version>
+        <javassist.version>3.18.0-GA</javassist.version>
+        <log4j.version>1.2.17</log4j.version>
+        <assertj.version>3.10.0</assertj.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.sjl.reclamation</groupId>
+                <artifactId>reclamation-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+            	<groupId>com.sjl.reclamation</groupId>
+            	<artifactId>reclamation-model</artifactId>
+            	<version>${project.version}</version>
+            </dependency>
+            
+            
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Hibernate -->
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-tools -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-tools</artifactId>
+                <version>${hibernate.tools.version}</version>
+            </dependency>
+
+
+            <!-- Oracle
+            <dependency>
+                    <groupId>com.oracle</groupId>
+                    <artifactId>ojdbc6</artifactId>
+                    <version>${oracle.version}</version>
+                </dependency>
+                -->
+
+            <!-- MYSQL -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${MYSQL.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/junit/junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+
+                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven.enforcer.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-java</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireJavaVersion>
+                                        <version>${java.version}</version>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
 </project>
