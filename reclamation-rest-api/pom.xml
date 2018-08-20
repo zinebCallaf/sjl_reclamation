@@ -24,7 +24,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.zineb</groupId>
+            <groupId>com.sjl.reclamation</groupId>
             <artifactId>reclamation-service</artifactId>
         </dependency>
     </dependencies>

@@ -5,10 +5,7 @@ import com.sjl.reclamation.model.dao.helpers.HibernateConfiguration;
 import com.sjl.reclamation.model.entity.Agent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+
 
 import java.util.List;
 
@@ -36,7 +33,9 @@ public class AgentDao implements DaoInterface<Agent, Integer> {
     @Override
     public void update(Agent entity) {
         final Session session = sessionFactory.openSession();
+        session.getTransaction().begin();
         session.update(entity);
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -51,7 +50,9 @@ public class AgentDao implements DaoInterface<Agent, Integer> {
     @Override
     public void delete(Agent entity) {
         final Session session = sessionFactory.openSession();
+        session.getTransaction().begin();
         session.delete(entity);
+        session.getTransaction().commit();
         session.close();
     }
 

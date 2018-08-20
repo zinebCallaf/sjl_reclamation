@@ -14,98 +14,67 @@ import java.util.List;
 
 public class CamionDao implements DaoInterface<Camion, Integer> {
 
-    private Session currentSession;
-    private Transaction currentTransaction;
-    private HibernateConfiguration hibernateConfiguration;
+    private SessionFactory sessionFactory;
+   
 
     public CamionDao() {
+    	sessionFactory = HibernateConfiguration.sessionFactory();
     }
 
-    public CamionDao(HibernateConfiguration hibernateConfiguration) {
-        this.hibernateConfiguration = hibernateConfiguration;
+    public CamionDao(SessionFactory sessionFactory) {
+        sessionFactory=this.sessionFactory;
     }
 
-    public Session openCurrentSession() {
-        currentSession = hibernateConfiguration.sessionFactory().openSession();
-        return currentSession;
+   
 
-    }
-
-    public Session openCurrentSessionwithTransaction() {
-        currentSession = hibernateConfiguration.sessionFactory().openSession();
-        currentTransaction = currentSession.beginTransaction();
-        return currentSession;
-    }
-
-    public void closeCurrentSession() {
-        currentSession.close();
-    }
-
-    public void closeCurrentSessionwithTransaction() {
-        currentTransaction.commit();
-        currentSession.close();
-    }
-
-    public Session getCurrentSession() {
-        return currentSession;
-    }
-
-    public void setCurrentSession(Session currentSession) {
-        this.currentSession = currentSession;
-    }
-
-    public Transaction getCurrentTransaction() {
-        return currentTransaction;
-    }
-
-    public void setCurrentTransaction(Transaction currentTransaction) {
-        this.currentTransaction = currentTransaction;
-    }
-
-
-    // Method Used to create the hibernate's SessionFactory Object
-    public static SessionFactory getSessionFactory() {
-        //Creating Configuration Instance and passing hibernate configuration file
-        Configuration configObj = new Configuration();
-        configObj.configure("hibernate.cfg.xml");
-
-        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
-
-        //Creating Hibernate Session Factory Instance
-        SessionFactory factoryObj = configObj.buildSessionFactory(serviceRegistryObj);
-
-        return factoryObj;
-
-    }
+  
 
     @Override
     public void persist(Camion entity) {
-        getCurrentSession().persist(entity);
+    	final Session session = sessionFactory.openSession();
+    	session.getTransaction().begin();
+        session.save(entity);
+        session.getTransaction().commit();
+        session.close();
 
     }
 
     @Override
     public void update(Camion entity) {
-        getCurrentSession().persist(entity);
-
+    	final Session session = sessionFactory.openSession();
+    	session.getTransaction().begin();
+    	session.update(entity);
+    	session.getTransaction().commit();
+    	session.close();
+       
     }
 
     @Override
     public Camion findbyId(Integer id) {
-        Camion camion = getCurrentSession().get(Camion.class, id);
-        return camion;
+    	final Session session = sessionFactory.openSession();
+    	Camion camion = (Camion) session.get(Camion.class,id);
+    	session.close();
+    	return camion;
+    	
+       
     }
 
     @Override
     public void delete(Camion entity) {
-        getCurrentSession().delete(entity);
+       final Session session = sessionFactory.openSession();
+       session.getTransaction().begin();
+       session.delete(entity);
+       session.getTransaction().commit();
+       session.close();
 
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Camion> findAll() {
-        List<Camion> camions = (List<Camion>) getCurrentSession().createQuery("from Camion").list();
+    	final Session session = sessionFactory.openSession();
+    	List<Camion> camions = (List<Camion>) session.createQuery("from Camion").list();
+    	session.close();
         return camions;
     }
 

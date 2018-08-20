@@ -1,9 +1,10 @@
 package com.sjl.reclamation.model.dao.impl;
 
 import com.sjl.reclamation.model.entity.Agent;
-import org.junit.Test;
 
 import java.util.List;
+
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
