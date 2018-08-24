@@ -27,6 +27,24 @@
             <groupId>com.sjl.reclamation</groupId>
             <artifactId>reclamation-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sjl.reclamation</groupId>
+            <artifactId>reclamation-model</artifactId>
+        </dependency>
+        
+        <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-server</artifactId>
+        </dependency>
+        <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-json</artifactId>
+        </dependency>   
+       	<dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                
+         </dependency>
     </dependencies>
 
     <build>

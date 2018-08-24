@@ -13,6 +13,10 @@ public class ReclamationServiceImpl implements ReclamationService{
 	private AgentDao agentDao;
 	private CamionDao camionDao;
 	
+	public ReclamationServiceImpl() {
+		
+	}
+	
 	public ReclamationServiceImpl(AgentDao agentDao,CamionDao camionDao) {
 		this.agentDao=agentDao;
 		this.camionDao=camionDao;
@@ -25,6 +29,9 @@ public class ReclamationServiceImpl implements ReclamationService{
 	public List<Camion> getCamionList() {
 		List<Camion> camions = camionDao.findAll();
 		return camions;
+	}
+	public void creerReclamation() {
+		System.out.print("reclamation");
 	}
 
 }
