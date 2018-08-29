@@ -12,17 +12,17 @@ import com.sjl.reclamation.rest.api.dto.CamionDto;
 
 
 
-@Path("/controller")
+@Path("/reclamation-management")
 public interface Controller {
 	
-	 @Path("/listAgents")
+	 @Path("/agents")
 	 @GET
 	 @Produces(MediaType.APPLICATION_JSON)
 	 public List<AgentDto> getListAgentDto();
 	 
 	 
 	
-	 @Path("/listCamions")
+	 @Path("/camions")
 	 @GET
 	 @Produces(MediaType.APPLICATION_JSON)
 	 public List<CamionDto> getListCamionDto(); 
