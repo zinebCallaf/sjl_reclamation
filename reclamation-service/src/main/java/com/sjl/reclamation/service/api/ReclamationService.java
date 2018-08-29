@@ -9,5 +9,6 @@ public interface ReclamationService {
 	
 	public List<Agent> getAgentList();
 	public List<Camion> getCamionList();
+	public void creerReclamation();
 
 }

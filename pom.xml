@@ -27,7 +27,18 @@
         <javassist.version>3.18.0-GA</javassist.version>
         <log4j.version>1.2.17</log4j.version>
         <assertj.version>3.10.0</assertj.version>
+        <jersey.version>1.8</jersey.version>
+        <mapper.version>0.7.4</mapper.version>
     </properties>
+    
+    <repositories>
+		<repository>
+			<id>maven2-repository.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -118,8 +129,30 @@
                 <version>${assertj.version}</version>
                 <scope>test</scope>
             </dependency>
+            
+            <!-- JERSEY -->
+             <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>${jersey.version}</version>
+           </dependency>
+           
+           <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-json</artifactId>
+                <version>${jersey.version}</version>
+          </dependency>   
+          
+     	   <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${mapper.version}</version>
+            </dependency>
+           
         </dependencies>
     </dependencyManagement>
+    
+   
 
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
