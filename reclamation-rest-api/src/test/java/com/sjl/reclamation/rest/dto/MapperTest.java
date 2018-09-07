@@ -17,13 +17,11 @@ public class MapperTest {
 	public void shouldConvertAgentEntitytoAgentDto() {
 		//Given 
 		Agent agent = new Agent();
-		agent.setId(1);
 		agent.setNom("callaf");
 		agent.setPrenom("zineb");
 		//When
 		AgentDto agentDto = modelMapper.map(agent,AgentDto.class);
 		//Then
-		 assertEquals(agent.getId(), agentDto.getId());
 		 assertEquals(agent.getNom(), agentDto.getNom());
 		 assertEquals(agent.getPrenom(), agentDto.getPrenom());
 				

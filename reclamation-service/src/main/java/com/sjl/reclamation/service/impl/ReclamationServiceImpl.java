@@ -10,8 +10,8 @@ import com.sjl.reclamation.service.api.ReclamationService;
 
 public class ReclamationServiceImpl implements ReclamationService{
 	
-	private AgentDao agentDao;
-	private CamionDao camionDao;
+	private AgentDao agentDao = new AgentDao() ;
+	private CamionDao camionDao = new CamionDao();
 	
 	public ReclamationServiceImpl() {
 		

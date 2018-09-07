@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "REC_CAMION")
+@Table(name = "camion")
 public class Camion implements Serializable {
 
     /**
@@ -14,12 +14,12 @@ public class Camion implements Serializable {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
 
-    @Column(name = "Matricule")
+    @Column(name = "matricule")
     private String Matricule;
 
 
